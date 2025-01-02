@@ -1,0 +1,150 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #424242 0%, #212121 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 380px;
+    background-color: #212121;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-container {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(45deg, #FFD700, #B71C1C);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #FFD700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    color: #FFFFFF;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #424242;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Button */
+.submit-btn {
+    width: 100%;
+    background: #B71C1C;
+    color: #FFFFFF;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #FFD700;
+    color: #212121;
+}
+
+/* Footer */
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+}
+
+.form-footer a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+    color: #FFFFFF;
+}
+
+/* Error Message */
+.error-message {
+    background-color: rgba(183, 28, 28, 0.1);
+    border: 1px solid #B71C1C;
+    color: #FFFFFF;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+    }
+    
+    .form-group input {
+        padding: 0.7rem;
+    }
+}
+.card-image img {
+    width: 100%; /* Ensure the image takes up the full width of the container */
+    height: 100%; /* Ensure the image takes up the full height of the container */
+    object-fit: cover; /* Crop the image to fit while maintaining its aspect ratio */
+    border-radius: 15px;
+}
