@@ -19,6 +19,7 @@ public class OrderDAOImpl implements OrderDAO {
     private static final String DELETE_QUERY = "DELETE FROM orders WHERE orderId = ?";
 
     private Connection con;
+	private int orderId;
 
     public OrderDAOImpl() {
         this.con = DBConnection.connect();
@@ -26,17 +27,25 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public int insert(Order order) {
-        try (PreparedStatement pstmt = con.prepareStatement(INSERT_QUERY)) {
+        try (PreparedStatement pstmt = con.prepareStatement(INSERT_QUERY,Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, order.getUserId());
             pstmt.setInt(2, order.getRestaurantId());
             pstmt.setFloat(3, order.getTotalAmount());
             pstmt.setString(4, order.getStatus());
             pstmt.setString(5, order.getPaymentMode());
-            return pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
+            if (rows > 0) {
+                try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                    	orderId=rs.getInt(1);
+                        order.setOrderId(orderId);
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return orderId;
     }
 
     @Override

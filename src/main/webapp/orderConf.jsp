@@ -11,7 +11,10 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #424242;
+            background-image: url("restaurant_images/yogurt-popsicle.jpg"); /* Specify your background image here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -19,7 +22,7 @@
         }
 
         .confirmation-container {
-            background: #212121;
+            background: rgba(33, 33, 33, 0); /* Transparent background */
             padding: 2.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -92,7 +95,7 @@
         .order-details {
             margin: 20px 0;
             padding: 20px;
-            background: #424242;
+            background: rgba(66, 66, 66, 0.8); /* Transparent background for the order details section */
             border-radius: 10px;
             animation: fadeIn 0.6s ease-out 0.8s both;
             border: 1px solid #FFD700;

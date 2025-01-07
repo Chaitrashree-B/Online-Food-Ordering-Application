@@ -38,7 +38,7 @@ public class UserLaunch {
                         String email = sc.nextLine();
                         System.out.println("Enter address:");
                         String address = sc.nextLine();
-                        System.out.println(userDAO.insert(new User(userId, username, password, email, address)) == 1
+                        System.out.println(userDAO.insert(new User( username, password, email, address)) == 1
                                 ? "Insert Success" : "Insert Failure");
                         break;
 

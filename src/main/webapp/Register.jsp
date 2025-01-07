@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | FoodDelivery</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+       
+       body {
+    background-image: url('restaurant_images/top-view-food-frame-with-copy-space.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align content horizontally to the right */
+    padding-right: 8rem; /* Adjust this value to move the container slightly left */
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(33, 33, 33, 0.5); /* Semi-transparent dark background */
+    color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 2rem; /* Additional adjustment if needed */
+}
+
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container svg {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #FFD700;
+            color: #000;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #e6c200;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .form-footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="container">

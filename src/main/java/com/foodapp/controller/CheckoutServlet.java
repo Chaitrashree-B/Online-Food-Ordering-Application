@@ -41,14 +41,22 @@ public class CheckoutServlet extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
         User user = (User) session.getAttribute("User");
 
-        System.out.println("User is not null");
-        System.out.println("Cart is not null");
+        // Check if user is logged in
+        if (user == null) {
+            // Store current cart in session
+            session.setAttribute("cart", cart);
+            // Store the return URL
+            session.setAttribute("redirectUrl", "checkout.jsp");
+            // Add message for login page
+            req.setAttribute("message", "Please login to complete your order");
+            resp.sendRedirect("login.jsp");
+            return;
+        }
 
-        if (cart != null && user != null && !cart.getItems().isEmpty()) {
-            System.out.println("Inside CheckedOutServlet IF is true");
-
+        // Rest of your existing checkout logic
+        if (cart != null && !cart.getItems().isEmpty()) {
+            // Your existing checkout processing code...
             String paymentMethod = req.getParameter("paymentMode");
-
             if (paymentMethod == null || paymentMethod.isEmpty()) {
                 req.setAttribute("error", "Please select a payment method");
                 req.getRequestDispatcher("checkout.jsp").forward(req, resp);
@@ -79,6 +87,7 @@ public class CheckoutServlet extends HttpServlet {
 
             order.setTotalAmount(totalAmount);
             int orderId = odao.insert(order);
+            System.out.println(orderId);
 
             if (orderId > 0) {
                 // Insert each cart item into the order_items table
@@ -113,6 +122,16 @@ public class CheckoutServlet extends HttpServlet {
         if (method.equals("POST")) {
             doPost(req, resp);
         } else {
+            // Check login status for GET requests too
+            HttpSession session = req.getSession();
+            User user = (User) session.getAttribute("User");
+            
+            if (session.getAttribute("User") == null) {
+                // Store the current URL in session to redirect back after login
+                session.setAttribute("redirectAfterLogin", "checkout.jsp");
+                resp.sendRedirect("login.jsp");
+                return;
+            }
             resp.sendRedirect("checkout.jsp");
         }
     }

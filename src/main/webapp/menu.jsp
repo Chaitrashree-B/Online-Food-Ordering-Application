@@ -16,8 +16,9 @@ com.foodapp.dao.RestaurantDAO, java.util.List"%>
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background-color: #424242;
+          body {
+            background: url("restaurant_images/dining_plate.jpg") no-repeat center center fixed; /* Add your background image here */
+            background-size: cover; /* Ensures the image covers the entire background */
             padding: 20px;
             color: #FFFFFF;
         }
@@ -73,19 +74,21 @@ com.foodapp.dao.RestaurantDAO, java.util.List"%>
             padding: 1rem;
         }
 
-        .menu-card {
-            background: #212121;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-        }
+       .menu-card {
+    background: rgba(33, 33, 33, 0); /* Set transparency using rgba */
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
 
-        .menu-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
-        }
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+    background: rgba(33, 33, 33, 0.9); /* Slightly reduce transparency on hover */
+}
+
 
         .menu-image {
             height: 200px;

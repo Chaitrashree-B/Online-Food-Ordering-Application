@@ -12,6 +12,10 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             background-color: #424242;
+            background-image: url("restaurant_images/fruits.jpg"); /* Specify your background image here */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-position: center center; /* Centers the image */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -19,11 +23,11 @@
         }
 
         .checkout-container {
-            background: #212121;
+            background: rgba(33, 33, 33, 0.5); /* Deep Black with 80% opacity for transparency */
             padding: 2.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             border: 2px solid #FFD700;
         }
@@ -36,6 +40,59 @@
             letter-spacing: 1px;
         }
 
+        .order-summary {
+            background: rgba(66, 66, 66, 0.5); /* Charcoal Gray with 80% opacity for transparency */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #FFD700;
+        }
+
+        .order-summary h2 {
+            color: #FFD700;
+            margin-top: 0;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .order-summary p {
+            color: #FFFFFF;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .total {
+            border-top: 1px solid #FFD700;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #FFD700;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            background: rgba(66, 66, 66, 0.5); /* Transparent background for textarea */
+            color: #FFFFFF;
+            font-size: 14px;
+                 max-width: calc(100% - 40px); 
+            resize: none;
+        }
+
         .payment-section {
             margin-bottom: 30px;
         }
@@ -45,7 +102,7 @@
             align-items: center;
             margin: 15px 0;
             padding: 15px;
-            background: #424242;
+            background: rgba(66, 66, 66, 0); /* Transparent background for payment options */
             border-radius: 10px;
             cursor: pointer;
             border: 1px solid transparent;
@@ -88,35 +145,6 @@
             color: #212121;
             transform: translateY(-2px);
         }
-
-        .order-summary {
-            background: #424242;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border: 1px solid #FFD700;
-        }
-
-        .order-summary h2 {
-            color: #FFD700;
-            margin-top: 0;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .order-summary p {
-            color: #FFFFFF;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .total {
-            border-top: 1px solid #FFD700;
-            margin-top: 15px;
-            padding-top: 15px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -148,6 +176,11 @@
         </div>
 
         <form action="checkout" method="POST">
+            <div class="form-group">
+                <label for="deliveryAddress">Delivery Address:</label>
+                <textarea id="deliveryAddress" name="deliveryAddress" placeholder="Enter your delivery address here..." required></textarea>
+            </div>
+
             <div class="payment-section">
                 <div class="payment-option">
                     <input type="radio" id="cod" name="paymentMode" value="COD" required>
@@ -172,3 +205,4 @@
     </div>
 </body>
 </html>
+s

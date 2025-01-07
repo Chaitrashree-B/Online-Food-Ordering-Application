@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.Map, com.foodapp.model.CartItems, com.foodapp.model.Cart" %>
+<%@ page import="java.util.Map, com.foodapp.model.CartItems, com.foodapp.model.Cart, com.foodapp.model.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,38 +9,46 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Luxurious & Premium Theme */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #424242; /* Charcoal Gray */
-            color: #FFFFFF; /* Text: White */
-        }
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #424242; /* Charcoal Gray */
+    background-image: url("restaurant_images/strawberry.jpg"); /* Specify your background image here */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center center; /* Centers the image */
+    color: #FFFFFF; /* Text: White */
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #424242; /* Charcoal Gray */
-        }
 
-        .cart-header {
-            text-align: center;
-            padding: 20px;
-            background-color: #212121; /* Deep Black */
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+       .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(66, 66, 66, 0.8); /* Charcoal Gray with 80% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8); /* Optional shadow for a premium feel */
+}
+
+.cart-item {
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly darker gray with 80% opacity */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-header {
+    padding: 20px;
+    background-color: rgba(33, 33, 33, 0.8); /* Deep Black with 80% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
         .cart-header h2 {
             color: #FFD700; /* Royal Gold */
         }
 
-        .cart-item {
-            background-color: #333333;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        
 
         .cart-item h3, .cart-item p {
             color: #FFFFFF; /* White text */
@@ -140,12 +148,22 @@
             <h3>Total Amount: ₹<%= cart.getTotalAmount() %></h3>
         </div>
 
-        <div class="cart-actions">
-            <!-- "Add More Items" button that redirects to the restaurant menu -->
+  <div class="cart-actions">
     <a href="menu?restaurantId=<%= restaurantId %>" class="action-button">Add More Items</a>
-            <a href="checkout.jsp" class="action-button">Proceed to Checkout</a>
-        </div>
-        <% } %>
-    </div>
+    <%
+        User user = (User) session.getAttribute("User");
+        if (user != null) {
+    %>
+        <a href="checkout.jsp" class="action-button">Proceed to Checkout</a>
+    <% } else { %>
+        <a href="login.jsp" class="action-button" onclick="saveCartState()">Proceed to Checkout</a>
+        <script>
+            function saveCartState() {
+                sessionStorage.setItem('redirectAfterLogin', 'cart.jsp');
+            }
+        </script>
+    <% } }%>
+</div>
+
 </body>
 </html>
